@@ -18,15 +18,10 @@ import React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { useFlags, useLDClient } from 'launchdarkly-react-client-sdk';
+import { Drawer } from '@mui/material';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
-
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
 
 const tiers = [
   {
@@ -54,58 +49,33 @@ const tiers = [
   },
 ];
 
-function ToggleColorMode() {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
-
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode],
-  );
-
-  return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <MyApp />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
-  );
-}
-
-function Content() {
+function Content({availableThemes}: { availableThemes: string[]}) {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
+
+  console.log('available themese length', availableThemes.length)
+
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-          bgcolor: 'background.default',
-          color: 'text.primary',
-          borderRadius: 1,
-          p: 3,
-        }}
-      >
-        {theme.palette.mode} mode
-        <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
-      </Box>
+        <Drawer open={availableThemes.length > 1} anchor="bottom" variant="persistent">
+          <Box
+            sx={{
+              display: 'flex',
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              bgcolor: 'background.default',
+              color: 'text.primary',
+              borderRadius: 1,
+              p: 3,
+            }}
+          >
+            {theme.palette.mode} mode
+            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+          </Box>
+        </Drawer>
       <AppBar
         position="static"
         color="default"
@@ -180,8 +150,13 @@ function Content() {
 }
 
 export default function Pricing() {
+  const ldClient = useLDClient();
+  const { availableThemes } = useFlags();
+
+  console.log('availabe themes', availableThemes)
+  const themes = availableThemes ? availableThemes.split(',') : ['light'];
   
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = React.useState<'light' | 'dark'>(themes[0]);
 
   const colorMode = React.useMemo(
     () => ({
@@ -207,7 +182,7 @@ export default function Pricing() {
       <ThemeProvider theme={theme}>
         <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' }, backgroundColor: '#e6e6e6' }} />
         <CssBaseline />
-        <Content />
+        <Content availableThemes={themes}/>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

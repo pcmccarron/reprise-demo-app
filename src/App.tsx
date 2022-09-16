@@ -30,7 +30,7 @@ const tiers = [
       'Deploy when you want',
       'Release when you\'re ready',
     ],
-    icon: <RocketLaunchIcon />
+    icon: <RocketLaunchIcon fontSize="large" color="warning"/>
   },
   {
     title: 'Improve Reliability',
@@ -38,14 +38,14 @@ const tiers = [
       'Rest easy with instant rollbacks',
       'Resolve incidents as soon as they happen'
     ],
-    icon: <StarIcon />
+    icon: <StarIcon fontSize="large" color="error"/>
   },
   {
     title: 'Safely Migrate',
     description: [
       'Take the risk of uncertainty out of the cloud, microservices, and database migrations'
     ],
-    icon: <CloudDoneIcon />
+    icon: <CloudDoneIcon fontSize="large" color='success'/>
   },
 ];
 
@@ -121,9 +121,6 @@ function Content({availableThemes}: { availableThemes: string[]}) {
                   subheaderTypographyProps={{
                     align: 'center',
                   }}
-                  sx={{
-                    backgroundColor: 'neutral'
-                  }}
                 />
                 <CardContent>
                   <ul>
@@ -171,6 +168,18 @@ export default function Pricing() {
       createTheme({
         palette: {
           mode,
+          primary: {
+            main: '#405BFF'
+          },
+          success: {
+            main: '#A34FDE'
+          },
+          error: {
+            main: '#405BFF'
+          },
+          warning: {
+            main: '#FF386B'
+          },
         },
       }),
     [mode],

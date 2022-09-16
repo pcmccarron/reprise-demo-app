@@ -150,7 +150,6 @@ function Content({availableThemes}: { availableThemes: string[]}) {
 }
 
 export default function Pricing() {
-  const ldClient = useLDClient();
   const { availableThemes } = useFlags();
 
   console.log('availabe themes', availableThemes)

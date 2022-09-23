@@ -6,9 +6,6 @@ import './index.css'
 
 const LDProvider = withLDProvider({
   clientSideID: import.meta.env.VITE_CLIENT_ID,
-  flags: {
-    'available-themes': 'light, dark'
-  }
 })(App);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

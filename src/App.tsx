@@ -13,7 +13,7 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {useFlags} from 'launchdarkly-react-client-sdk';
 import {
 	Box,
@@ -205,10 +205,11 @@ function Content() {
 }
 
 export default function Pricing() {
-	const theme = React.useMemo(
+	const theme = useMemo(
 		() =>
 			createTheme({
 				palette: {
+					mode: 'dark',
 					primary: {
 						main: '#405BFF',
 					},

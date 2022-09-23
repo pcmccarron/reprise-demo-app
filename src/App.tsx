@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
@@ -12,7 +13,7 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import React, {useState} from 'react';
+import React from 'react';
 import {useFlags} from 'launchdarkly-react-client-sdk';
 import {
 	Box,
@@ -24,7 +25,6 @@ import {
 	Switch,
 } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import StickyFooter from './sticky-footer.jsx';
 
 const tiers = [
 	{
@@ -198,7 +198,6 @@ function Content() {
 						))}
 					</Grid>
 					{flags.showBetaOptIn ? <UserSettings /> : null}
-					<StickyFooter />
 				</Container>
 			</Container>
 		</>
@@ -206,14 +205,10 @@ function Content() {
 }
 
 export default function Pricing() {
-	const themes = ['dark'];
-	const [mode, setMode] = useState(themes[0]);
-
 	const theme = React.useMemo(
 		() =>
 			createTheme({
 				palette: {
-					mode,
 					primary: {
 						main: '#405BFF',
 					},
@@ -228,7 +223,7 @@ export default function Pricing() {
 					},
 				},
 			}),
-		[mode],
+		[],
 	);
 
 	return (

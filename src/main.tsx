@@ -1,8 +1,7 @@
-/* eslint-disable import/extensions */
 import React from 'react';
-import ReactDOM from 'react-dom/client.js';
+import ReactDOM from 'react-dom/client';
 import {withLDProvider} from 'launchdarkly-react-client-sdk';
-import App from './app';
+import App from './App';
 import './index.css';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

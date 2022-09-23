@@ -35,6 +35,10 @@
   },
   "xo": {
     "prettier": true,
-    "extends": "xo-react"
+    "extends": "xo-react",
+    "rules": {
+      "n/file-extension-in-import": "off",
+      "import/extensions": "off"
+    }
   }
 }

@@ -25,6 +25,7 @@ import {
 	Switch,
 } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
+import Audimat3000 from '../public/fonts/Audimat3000-Regulier.woff2';
 
 const tiers = [
 	{
@@ -56,7 +57,7 @@ function AppToolBar() {
 			color="default"
 			elevation={0}
 			sx={{
-				minHeight: 90,
+				minHeight: 110,
 				borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
 				backgroundColor: '#282828',
 				// AlignItems: 'center',
@@ -208,6 +209,20 @@ export default function Pricing() {
 	const theme = useMemo(
 		() =>
 			createTheme({
+				typography: {
+					fontFamily: 'Audimat3000-Regulier',
+				},
+				components: {
+					MuiCssBaseline: {
+						styleOverrides: `
+							@font-face {
+								font-family: 'Audimat3000-Regulier';
+								src: local('Audimat3000-Regulier'), url(${Audimat3000}) format('woff2');
+								unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+							}
+						`,
+					},
+				},
 				palette: {
 					mode: 'dark',
 					primary: {

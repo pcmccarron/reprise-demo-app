@@ -1,8 +1,10 @@
 :root {
-  font-family: Inter;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  @font-face {
+    font-family: 'Audimat 3000 Regulier';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -10,6 +12,13 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-image: url(../../cool-background.png);
+  background-repeat: no-repeat, repeat;
+
+  background-size: cover;
 }
 
 @media (prefers-color-scheme: dark) {

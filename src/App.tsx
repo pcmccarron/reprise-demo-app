@@ -1,21 +1,15 @@
 /* eslint-disable unicorn/filename-case */
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Grid from '@mui/material/Grid';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-import StarIcon from '@mui/icons-material/Star';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-import CloudDoneIcon from '@mui/icons-material/CloudDone';
+import StarIcon from '@mui/icons-material/StarHalf';
+import ToggleOn from '@mui/icons-material/ToggleOn';
+import CloudIcon from '@mui/icons-material/Cloud';
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, {useMemo} from 'react';
 import {useFlags} from 'launchdarkly-react-client-sdk';
 import {createTheme} from '@mui/material';
-import AppBar from '@mui/material/AppBar';
 import Audimat3000 from '../public/fonts/Audimat3000-Regulier.woff2';
 import AppToolBar from './components/app-bar';
 import HorizontalLayout from './components/horizontal-layout';
@@ -25,7 +19,7 @@ const tiers = [
 	{
 		title: 'Release Confidently',
 		description: ['Deploy when you want', "Release when you're ready"],
-		icon: <RocketLaunchIcon fontSize="large" color="warning" />,
+		icon: <ToggleOn fontSize="large" color="warning" />,
 	},
 	{
 		title: 'Improve Reliability',
@@ -40,7 +34,7 @@ const tiers = [
 		description: [
 			'Take the risk of uncertainty out of the cloud, microservices, and database migrations',
 		],
-		icon: <CloudDoneIcon fontSize="large" color="success" />,
+		icon: <CloudIcon fontSize="large" color="success" />,
 	},
 ];
 
@@ -48,9 +42,17 @@ function Content() {
 	const flags = useFlags();
 
 	return (
-		<>
+		<div className="background">
 			<AppToolBar />
-			<Container>
+			<Container
+				sx={
+					{
+						// BackgroundImage: `url(${background})`,
+						// height: '100vh',
+						// width: '100%',
+					}
+				}
+			>
 				<Container
 					disableGutters
 					maxWidth="sm"
@@ -81,7 +83,7 @@ function Content() {
 					<HorizontalLayout tiers={tiers} flags={flags} />
 				)}
 			</Container>
-		</>
+		</div>
 	);
 }
 
@@ -112,10 +114,10 @@ export default function App() {
 						main: '#A34FDE',
 					},
 					error: {
-						main: '#405BFF',
+						main: '#EBFF38',
 					},
 					warning: {
-						main: '#FF386B',
+						main: '#3DD6F5',
 					},
 				},
 			}),

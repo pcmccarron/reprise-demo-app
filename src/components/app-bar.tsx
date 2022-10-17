@@ -9,11 +9,11 @@ export default function AppToolBar() {
 			elevation={0}
 			sx={{
 				minHeight: 110,
-				borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-				backgroundColor: '#282828',
+				// BorderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+				// BackgroundColor: '#282828',
 				// AlignItems: 'center',
 				justifyContent: 'center',
-				zIndex: (theme) => theme.zIndex.drawer + 1,
+				// ZIndex: (theme) => theme.zIndex.drawer + 1,
 			}}
 		>
 			<Toolbar>

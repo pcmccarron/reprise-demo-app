@@ -21,9 +21,6 @@ const horizontalLayout = ({
 }) => (
 	<Container maxWidth="lg" component="main">
 		<Grid container spacing={2} columnSpacing={5}>
-			<Grid item xs={6}>
-				<Image src="toggle.png" />
-			</Grid>
 			<Grid item direction="column">
 				{tiers.map((tier) => (
 					<Grid key={tier.title} item paddingBottom={2}>

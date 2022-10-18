@@ -23,30 +23,21 @@ const horizontalLayout = ({
 				<Grid key={tier.title} item xs={12} md={4}>
 					<Card
 						sx={{
-							backgroundColor: '#414042',
+							backgroundColor: '#282828',
 							minHeight: 200,
+							opacity: 1,
 						}}
 					>
 						<CardHeader
-							title={tier.title}
-							titleTypographyProps={{align: 'center'}}
-							action={tier.icon}
-							subheaderTypographyProps={{
-								align: 'center',
-							}}
-							sx={{
-								backgroundColor: '#282828',
-							}}
+							title={tier.icon}
+							titleTypographyProps={{align: 'left'}}
 						/>
 						<CardContent>
+							<Typography variant="h5">{tier.title}</Typography>
+							<br />
 							<ul>
 								{tier.description.map((line) => (
-									<Typography
-										key={line}
-										component="li"
-										variant="h6"
-										align="center"
-									>
+									<Typography key={line} component="li" variant="body1">
 										{line}
 									</Typography>
 								))}

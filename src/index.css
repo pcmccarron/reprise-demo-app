@@ -14,32 +14,38 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.background {
-  /* background-image: url(../../grid-background.png); */
-  /* background-size: 400% 400%; */
-  /* background-image: url(../../single-grid-background.png); */
-  /* background-repeat: no-repeat, repeat; */
-  /* background-size: cover; */
-  /* background-size: cover; */
-  background-color: #0000000;
-  /* backgroung-blend-mode: lighten; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* margin: 0 auto; */
-  /* height: 100vh; */
+body {
+  background-color: #282828;
 }
 
-.background::before {
+.hero {
+  background-size: cover;
+  background-color: #282828;
+  position: relative; 
+  height: 100vh;
+  width: 100%;
+  opacity: 1;
+}
+
+.hero::before {
   content: '';
+  background-color: #282828;
   background-image: url(../../single-grid-background.png);
-  background-size: contain;
+  background-size: cover;
   position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.2;
+  opacity: 0.1;
+}
+
+.heroText {
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: #9eadf1;
+  background-image: linear-gradient(90deg,#edf4c9,#9eadf1);
 }
 
 @media (prefers-color-scheme: dark) {

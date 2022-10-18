@@ -42,47 +42,37 @@ function Content() {
 	const flags = useFlags();
 
 	return (
-		<div className="background">
+		<div className="hero">
 			<AppToolBar />
 			<Container
-				sx={
-					{
-						// BackgroundImage: `url(${background})`,
-						// height: '100vh',
-						// width: '100%',
-					}
-				}
+				disableGutters
+				maxWidth="sm"
+				component="main"
+				sx={{pt: 4, pb: 6}}
 			>
-				<Container
-					disableGutters
-					maxWidth="sm"
-					component="main"
-					sx={{pt: 4, pb: 6}}
+				<Typography
+					gutterBottom
+					component="h1"
+					variant="h2"
+					align="center"
+					className="heroText"
 				>
-					<Typography
-						gutterBottom
-						component="h1"
-						variant="h2"
-						align="center"
-						color="text.primary"
-					>
-						LaunchDarkly <br /> Feature Management
-					</Typography>
-					<Typography
-						variant="h5"
-						align="center"
-						color="text.secondary"
-						component="p"
-					>
-						Ship features fast and fearlessly with dark launches
-					</Typography>
-				</Container>
-				{flags.pageLayout === 'vertical' ? (
-					<VerticalLayout tiers={tiers} flags={flags} />
-				) : (
-					<HorizontalLayout tiers={tiers} flags={flags} />
-				)}
+					LaunchDarkly <br /> Feature Management
+				</Typography>
+				<Typography
+					variant="h5"
+					align="center"
+					color="text.secondary"
+					component="p"
+				>
+					Ship features fast and fearlessly with dark launches
+				</Typography>
 			</Container>
+			{flags.pageLayout === 'vertical' ? (
+				<VerticalLayout tiers={tiers} flags={flags} />
+			) : (
+				<HorizontalLayout tiers={tiers} flags={flags} />
+			)}
 		</div>
 	);
 }

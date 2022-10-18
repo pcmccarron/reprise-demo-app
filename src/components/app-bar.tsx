@@ -10,7 +10,7 @@ export default function AppToolBar() {
 			sx={{
 				minHeight: 110,
 				// BorderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-				// BackgroundColor: '#282828',
+				backgroundColor: '#282828',
 				// AlignItems: 'center',
 				justifyContent: 'center',
 				// ZIndex: (theme) => theme.zIndex.drawer + 1,
@@ -21,7 +21,9 @@ export default function AppToolBar() {
 					component="img"
 					src="primary-lockup-white.png"
 					sx={{
-						maxHeight: 50,
+						maxHeight: 70,
+						marginTop: '20px',
+						marginLeft: '20px',
 					}}
 				/>
 				{/* and that is how you push the feature menu to the right */}

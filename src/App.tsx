@@ -9,8 +9,10 @@ import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, {useMemo} from 'react';
 import {useFlags} from 'launchdarkly-react-client-sdk';
-import {createTheme} from '@mui/material';
+import {Box, createTheme} from '@mui/material';
 import Audimat3000 from '../public/fonts/Audimat3000-Regulier.woff2';
+import SohneBuch from '../public/fonts/Sohne-Buch.woff2';
+import SohneKraftig from '../public/fonts/Sohne-Kraftig.woff2';
 import AppToolBar from './components/app-bar';
 import HorizontalLayout from './components/horizontal-layout';
 import VerticalLayout from './components/vertical-layout';
@@ -48,7 +50,10 @@ function Content() {
 				disableGutters
 				maxWidth="sm"
 				component="main"
-				sx={{pt: 4, pb: 6}}
+				sx={{
+					pt: 4,
+					pb: 6,
+				}}
 			>
 				<Typography
 					gutterBottom
@@ -68,11 +73,19 @@ function Content() {
 					Ship features fast and fearlessly with dark launches
 				</Typography>
 			</Container>
-			{flags.pageLayout === 'vertical' ? (
-				<VerticalLayout tiers={tiers} flags={flags} />
-			) : (
-				<HorizontalLayout tiers={tiers} flags={flags} />
-			)}
+			<Box
+				sx={{
+					display: 'flex',
+					alignContent: 'center',
+					justifyContent: 'center',
+				}}
+			>
+				{flags.pageLayout === 'vertical' ? (
+					<VerticalLayout tiers={tiers} flags={flags} />
+				) : (
+					<HorizontalLayout tiers={tiers} flags={flags} />
+				)}
+			</Box>
 		</div>
 	);
 }
@@ -82,15 +95,61 @@ export default function App() {
 		() =>
 			createTheme({
 				typography: {
-					fontFamily: 'Audimat3000-Regulier',
+					fontFamily: [
+						'Audimat3000-Regulier',
+						'Sohne-Buch',
+						'Sohne-Kraftig',
+					].join(','),
+					h5: {
+						'@font-face': {
+							fontFamily: 'Sohne-Kraftig',
+						},
+					},
+					h3: {
+						'@font-face': {
+							fontFamily: 'Sohne-Kraftig',
+						},
+					},
+					body1: {
+						'@font-face': {
+							fontFamily: 'Sohne-Kraftig',
+						},
+					},
+					body2: {
+						'@font-face': {
+							fontFamily: 'Sohne-Kraftig',
+						},
+					},
 				},
 				components: {
+					MuiCard: {
+						styleOverrides: {
+							root: {
+								backgroundColor: '#414042',
+								opacity: 1,
+								fontFamily: 'Sohne-Kraftig',
+							},
+						},
+					},
 					MuiCssBaseline: {
 						styleOverrides: `
 							@font-face {
 								font-family: 'Audimat3000-Regulier';
 								src: local('Audimat3000-Regulier'), url(${Audimat3000}) format('woff2');
 								unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+								font-weight: 100;
+							}
+							@font-face {
+								font-family: 'Sohne-Kraftig';
+								src: local('Sohne-Kraftig'), url(${SohneKraftig}) format('woff2');
+								unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+								font-weight: 200;
+							}
+							@font-face {
+								font-family: 'Sohne-Buch';
+								src: local('Sohne-Buch'), url(${SohneBuch}) format('woff2');
+								unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+								font-weight: 300;
 							}
 						`,
 					},

@@ -20,37 +20,45 @@ const horizontalLayout = ({
 	flags: any;
 }) => (
 	<Container maxWidth="lg" component="main">
-		<Grid container spacing={2} columnSpacing={5}>
+		<Grid
+			container
+			spacing={2}
+			columnSpacing={5}
+			sx={{alignContent: 'center', justifyContent: 'center'}}
+		>
 			<Grid item direction="column">
 				{tiers.map((tier) => (
 					<Grid key={tier.title} item paddingBottom={2}>
 						<Card
 							sx={{
-								backgroundColor: '#414042',
 								maxHeight: 180,
-								minWidth: 400,
-								maxWidth: 400,
+								minWidth: 500,
+								maxWidth: 500,
+								opacity: 1,
 							}}
 						>
 							<CardHeader
-								title={tier.title}
-								titleTypographyProps={{align: 'center'}}
-								action={tier.icon}
-								subheaderTypographyProps={{
-									align: 'center',
-								}}
+								avatar={tier.icon}
+								title={<Typography variant="h5">{tier.title}</Typography>}
+								titleTypographyProps={{align: 'left'}}
 								sx={{
-									backgroundColor: '#282828',
+									paddingLeft: '80px',
 								}}
 							/>
-							<CardContent>
+							<CardContent
+								sx={{
+									paddingLeft: '130px',
+									paddingRight: '50px',
+								}}
+							>
 								<ul>
 									{tier.description.map((line) => (
 										<Typography
 											key={line}
 											component="li"
-											variant="h6"
-											align="center"
+											align="left"
+											variant="body1"
+											color="#E6E6E6"
 										>
 											{line}
 										</Typography>

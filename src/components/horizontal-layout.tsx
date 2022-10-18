@@ -23,7 +23,6 @@ const horizontalLayout = ({
 				<Grid key={tier.title} item xs={12} md={4}>
 					<Card
 						sx={{
-							backgroundColor: '#282828',
 							minHeight: 200,
 							opacity: 1,
 						}}

@@ -24,19 +24,7 @@ body {
   height: 100vh;
   width: 100%;
   opacity: 100;
-}
-
-.hero::before {
-  content: '';
-  background-color: #282828;
-  background-image: url(../../single-grid-background.png);
-  background-size: cover;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.1;
+  background-image: url(../../transparent-grid.png);
 }
 
 .heroText {

@@ -26,7 +26,7 @@ body {
   opacity: 100;
 }
 
-.hero::after {
+.hero::before {
   content: '';
   background-color: #282828;
   background-image: url(../../single-grid-background.png);

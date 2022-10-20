@@ -32,7 +32,7 @@ const horizontalLayout = ({
 							titleTypographyProps={{align: 'left'}}
 						/>
 						<CardContent>
-							<Typography variant="h5">{tier.title}</Typography>
+							<Typography variant="h6">{tier.title}</Typography>
 							<br />
 							<ul>
 								{tier.description.map((line) => (

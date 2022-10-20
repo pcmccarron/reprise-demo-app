@@ -39,7 +39,7 @@ const horizontalLayout = ({
 						>
 							<CardHeader
 								avatar={tier.icon}
-								title={<Typography variant="h5">{tier.title}</Typography>}
+								title={<Typography variant="h6">{tier.title}</Typography>}
 								titleTypographyProps={{align: 'left'}}
 								sx={{
 									paddingLeft: '80px',

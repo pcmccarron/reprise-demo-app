@@ -1,7 +1,21 @@
-import {AppBar, Toolbar, Box} from '@mui/material';
-import React from 'react';
+import { AppBar, Toolbar, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import NavBar from './navbar';
+import { useFlags, useLDClient } from 'launchdarkly-react-client-sdk';
 
 export default function AppToolBar() {
+
+	const { login } = useFlags();
+
+	const [userName, setUserName] = React.useState();
+	const ldClient = useLDClient();
+
+	useEffect(() => {
+		if (userName) {
+			ldClient.identify({ key: userName });
+		}
+	}, [userName])
+
 	return (
 		<AppBar
 			position="static"
@@ -10,7 +24,7 @@ export default function AppToolBar() {
 			sx={{
 				minHeight: 110,
 				// BorderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-				backgroundColor: '#282828',
+				backgroundColor: 'transparent',
 				// AlignItems: 'center',
 				justifyContent: 'center',
 				// ZIndex: (theme) => theme.zIndex.drawer + 1,
@@ -27,8 +41,13 @@ export default function AppToolBar() {
 					}}
 				/>
 				{/* and that is how you push the feature menu to the right */}
-				<Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}} />
+				<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} />
 				{/* with this stupid box above this comment */}
+				{login ?
+					< Box sx={{ float: 'right' }}>
+						<NavBar userName={userName} setUserName={setUserName} />
+					</Box>
+					: null}
 			</Toolbar>
 		</AppBar>
 	);

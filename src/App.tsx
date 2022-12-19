@@ -5,11 +5,11 @@ import Container from '@mui/material/Container';
 import StarIcon from '@mui/icons-material/StarHalf';
 import ToggleOn from '@mui/icons-material/ToggleOn';
 import CloudIcon from '@mui/icons-material/Cloud';
-import {ThemeProvider} from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import React, {useMemo} from 'react';
-import {useFlags} from 'launchdarkly-react-client-sdk';
-import {Box, createTheme} from '@mui/material';
+import React, { useMemo, useEffect } from 'react';
+import { useFlags, useLDClient } from 'launchdarkly-react-client-sdk';
+import { Box, createTheme } from '@mui/material';
 import Audimat3000 from '../public/fonts/Audimat3000-Regulier.woff2';
 import SohneBuch from '../public/fonts/Sohne-Buch.woff2';
 import SohneKraftig from '../public/fonts/Sohne-Kraftig.woff2';
@@ -44,7 +44,15 @@ function Content() {
 	const flags = useFlags();
 
 	return (
-		<div className="hero">
+		<div style={{
+			backgroundSize: "cover",
+			backgroundColor: "#282828",
+			position: "relative",
+			height: "100vh",
+			width: "100 %",
+			opacity: "100",
+			backgroundImage: `url(${flags.bgImg})`
+		}}>
 			<AppToolBar />
 			<Container
 				disableGutters
@@ -67,7 +75,7 @@ function Content() {
 				<Typography
 					variant="h5"
 					align="center"
-					color="text.secondary"
+					color={flags.background}
 					component="p"
 				>
 					Ship features fast and fearlessly with dark launches
@@ -91,6 +99,7 @@ function Content() {
 }
 
 export default function App() {
+
 	const theme = useMemo(
 		() =>
 			createTheme({
@@ -164,8 +173,8 @@ export default function App() {
 		<ThemeProvider theme={theme}>
 			<GlobalStyles
 				styles={{
-					ul: {margin: 0, padding: 0, listStyle: 'none'},
-					backgroundColor: '#282828',
+					ul: { margin: 0, padding: 0, listStyle: 'none' },
+					backgroundColor: "#282828",
 				}}
 			/>
 			<CssBaseline />

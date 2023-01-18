@@ -4,14 +4,16 @@ import {useFlags, useLDClient} from 'launchdarkly-react-client-sdk';
 import NavBar from './navbar';
 
 export default function AppToolBar() {
-	const {login} = useFlags();
+	const flags = useFlags();
+	console.log(flags.login);
+	console.log(flags.background);
 
 	const [userName, setUserName] = React.useState();
 	const ldClient = useLDClient();
-
+	
 	useEffect(() => {
 		if (userName) {
-			ldClient.identify({key: userName});
+			ldClient.identify({kind: "dev-tester", key: userName});
 		}
 	}, [userName]);
 
@@ -42,7 +44,7 @@ export default function AppToolBar() {
 				{/* and that is how you push the feature menu to the right */}
 				<Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}} />
 				{/* with this stupid box above this comment */}
-				{login ? (
+				{flags.login ? (
 					<Box sx={{float: 'right'}}>
 						<NavBar userName={userName} setUserName={setUserName} />
 					</Box>

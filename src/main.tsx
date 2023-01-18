@@ -8,6 +8,11 @@ import './index.css';
 const LDProvider = withLDProvider({
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/naming-convention
 	clientSideID: import.meta.env.VITE_CLIENT_ID,
+	context: {
+		kind: "development",
+		key: "development",
+		name: "peter"
+	}
 })(App);
 
 ReactDOM.createRoot(document.querySelector('#root')!).render(

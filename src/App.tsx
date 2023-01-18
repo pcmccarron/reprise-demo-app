@@ -8,7 +8,7 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, {useMemo, useEffect} from 'react';
-import {useFlags, useLDClient} from 'launchdarkly-react-client-sdk';
+import {useFlags} from 'launchdarkly-react-client-sdk';
 import {Box, createTheme} from '@mui/material';
 import Audimat3000 from '../public/fonts/Audimat3000-Regulier.woff2';
 import SohneBuch from '../public/fonts/Sohne-Buch.woff2';

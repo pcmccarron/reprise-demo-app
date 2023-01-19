@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {useFlags, useLDClient} from 'launchdarkly-react-client-sdk';
 import NavBar from './navbar';
 
+
 export default function AppToolBar() {
 	const flags = useFlags();
 	console.log(flags.login);
@@ -13,7 +14,7 @@ export default function AppToolBar() {
 	
 	useEffect(() => {
 		if (userName) {
-			ldClient.identify({kind: "dev-tester", key: userName});
+			ldClient.identify(newContext, null, () => {key: userName});
 		}
 	}, [userName]);
 

@@ -9,9 +9,9 @@ const LDProvider = withLDProvider({
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/naming-convention
 	clientSideID: import.meta.env.VITE_CLIENT_ID,
 	context: {
-		kind: "development",
-		key: "development",
-		name: "peter"
+		"kind": "newcontext2",
+		"key": "newcontext2",
+		"name": "Peter"
 	}
 })(App);
 

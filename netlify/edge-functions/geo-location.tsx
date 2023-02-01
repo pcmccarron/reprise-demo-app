@@ -6,5 +6,4 @@ export default async (request: Request, context: Context) => {
         city: context.geo.city,
     });
 }
-console.log(location);
 export const config: Config = {path: "/city"}

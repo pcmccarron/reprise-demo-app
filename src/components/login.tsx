@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal, Button, Box, Typography, TextField} from '@mui/material';
 import PropTypes from 'prop-types';
 
+
 // Modal style
 const style = {
 	position: 'absolute',
@@ -15,7 +16,7 @@ const style = {
 	p: 4,
 };
 
-export default function Login({login, handleClose, open}) {
+export default function Login({login, handleClose, open }) {
 	const [userTemporaryName, setTemporaryUserName] = React.useState('');
 
 	const updateUsername = (event) => {

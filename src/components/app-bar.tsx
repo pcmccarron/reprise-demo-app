@@ -2,9 +2,10 @@ import {AppBar, Toolbar, Box} from '@mui/material';
 import React, {useEffect} from 'react';
 import {useFlags, useLDClient} from 'launchdarkly-react-client-sdk';
 import NavBar from './navbar';
+import type { Context } from 'https://edge.netlify.com/';
 
-
-export default function AppToolBar() {
+export default function AppToolBar(context: Context) {
+	const location = context.geo.city || "Unknown";
 	const flags = useFlags();
 	console.log(flags.login);
 	console.log(flags.background);
@@ -14,7 +15,7 @@ export default function AppToolBar() {
 	
 	useEffect(() => {
 		if (userName) {
-			ldClient.identify(newContext, null, () => {key: userName});
+			ldClient.identify({kind: "development", key: userName, name: userName, organization: "LaunchDarkly", location: location});
 		}
 	}, [userName]);
 

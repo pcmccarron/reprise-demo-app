@@ -41,9 +41,7 @@ const tiers = [
 	},
 ];
 
-function Content(context: Context) {
-	//gather geo info
-	const userCity = context.geo?.city?.name || "Some city";
+function Content() {
 	const flags = useFlags();
 
 	return (

@@ -5,12 +5,7 @@ import NavBar from './navbar';
 
 
 export default function AppToolBar() {
-	const [location, setLocation] = React.useState();
-	useEffect (() => { 
-	fetch('/city')
-	.then(res => {
-	res.json().then(data => {setLocation(data)})
-	})},[]); 
+	const location = fetch('/city');
 
 	console.log(location);
 

@@ -2,10 +2,18 @@ import {AppBar, Toolbar, Box} from '@mui/material';
 import React, {useEffect} from 'react';
 import {useFlags, useLDClient} from 'launchdarkly-react-client-sdk';
 import NavBar from './navbar';
-import type { Context } from 'https://edge.netlify.com/';
 
-export default function AppToolBar(context: Context) {
-	const location = context.geo.city || "Unknown";
+
+export default function AppToolBar() {
+	const [location, setLocation] = React.useState();
+	useEffect (() => { 
+	fetch('/city')
+	.then(res => {
+	res.json().then(data => {setLocation(data)})
+	})},[]); 
+
+	console.log(location);
+
 	const flags = useFlags();
 	console.log(flags.login);
 	console.log(flags.background);

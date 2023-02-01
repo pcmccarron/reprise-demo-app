@@ -17,6 +17,7 @@ import AppToolBar from './components/app-bar';
 import HorizontalLayout from './components/horizontal-layout';
 import VerticalLayout from './components/vertical-layout';
 
+
 const tiers = [
 	{
 		title: 'Release Confidently',
@@ -40,7 +41,9 @@ const tiers = [
 	},
 ];
 
-function Content() {
+function Content(context: Context) {
+	//gather geo info
+	const userCity = context.geo?.city?.name || "Some city";
 	const flags = useFlags();
 
 	return (

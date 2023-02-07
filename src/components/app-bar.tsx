@@ -25,7 +25,7 @@ export default function AppToolBar() {
 	
 	useEffect(() => {
 		if (userName) {
-			ldClient.identify({kind: "development", key: userName, name: userName, organization: "LaunchDarkly", location: location});
+			ldClient.identify({kind: "multi", "user": {key: "toggle", name: userName}, "organization": {key: "where-toggle-works", organization: "LaunchDarkly"}, "location":{key:"where-toggle-is", location: location}});
 		}
 	}, [userName]);
 

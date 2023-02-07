@@ -2,9 +2,11 @@ import {AppBar, Toolbar, Box} from '@mui/material';
 import React, {useEffect} from 'react';
 import {useFlags, useLDClient} from 'launchdarkly-react-client-sdk';
 import NavBar from './navbar';
+import { v4 as uuid } from 'uuid';
 
 
 export default function AppToolBar() {
+	//Location retrieval
 	const [location, getLocation] = React.useState("");
 	useEffect(() => { 
 		fetch('/city')
@@ -15,6 +17,9 @@ export default function AppToolBar() {
 		)}, [])
 
 	console.log(location);
+
+	//random id generator
+	const unique_id = uuid();
 
 	const flags = useFlags();
 	console.log(flags.login);
@@ -29,7 +34,7 @@ export default function AppToolBar() {
 				{kind: "multi", 
 				"user": 
 				{
-				key: "why-toggle-is", 
+				key: unique_id, 
 				name: userName, 
 				email: `${userName}@launchdarkly.com`
 				}, 

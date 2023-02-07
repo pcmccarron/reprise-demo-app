@@ -34,7 +34,7 @@ export default function AppToolBar() {
 				{
 				key: uuid(), 
 				name: userName,
-				description: "who-am-i" 
+				description: "who-am-i", 
 				email: `${userName}@launchdarkly.com`
 				}, 
 				"organization": 

@@ -18,8 +18,6 @@ export default function AppToolBar() {
 
 	console.log(location);
 
-	//random id generator
-	const unique_id = uuid();
 
 	const flags = useFlags();
 	console.log(flags.login);
@@ -34,18 +32,21 @@ export default function AppToolBar() {
 				{kind: "multi", 
 				"user": 
 				{
-				key: unique_id, 
-				name: userName, 
+				key: uuid(), 
+				name: userName,
+				description: "who-am-i" 
 				email: `${userName}@launchdarkly.com`
 				}, 
 				"organization": 
 				{
-				key: "where-toggle-works", 
+				key: uuid(),
+				description: "where-toggle-works", 
 				organization: "LaunchDarkly"
 				}, 
 				"location":
 				{
-				key:"where-toggle-is", 
+				key: uuid(),
+				description:"where-toggle-is", 
 				location: location
 				}
 			});
